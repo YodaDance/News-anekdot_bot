@@ -1,4 +1,4 @@
 $ cat .gitignore
 config.py
 settings.json
-_pycache_/
+__pycache__/
