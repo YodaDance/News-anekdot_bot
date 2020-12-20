@@ -48,7 +48,7 @@ async def анекдот(ctx): #будет выводить анекдот, по
     if anekdots:
         random.shuffle(anekdots) #перемешивает список анекдотов, чтобы не выдавал их в одном и том же порядке
         await ctx.send('Внимание, анекдот!\n')
-        await ctx.send(anekdots[0].text)
+        await ctx.send(anekdots[0])
         anekdots.pop(0) #удаляем анекдот из пулла
     else:
         await ctx.send('Анекдоты кончились, дядя! Ну что ты так много и жадно их читаешь!\nА теперь и сам ищи себе эти анекдоты, родной!')
@@ -67,7 +67,7 @@ async def новости(ctx): #напишет в чат основную нов
 
 
     default_news_output = '***Перейдем к другим новостям:***\n'
-    for i in range(5): #аналогично как и с главной новостью, только теперь в цикле
+    for i in range(5): #аналогично как и с главной новостью, только теперь в цикле. Здесь же можете указать количество новостей для вывода.
         news_default_key = list(news_default.keys())[i]
         news_default_href = '<{}>'.format(news_default[news_default_key])
         default_news_output += f'{i+1}) {"**" + news_default_key + "**" }.\nСсылка к прочтению:\n{news_default_href}\n\n'
@@ -76,4 +76,5 @@ async def новости(ctx): #напишет в чат основную нов
     final_news = news_headline_output + default_news_output #сводим главную и другие новости в 1 сообщение
     await ctx.send(final_news) #отправляем сообщение
 
-bot.run(settings['token']) #у меня создан отдельный файл с конфигом, сюда в ы можете просто вставить свой токен
+
+bot.run(settings['token']) #у меня создан отдельный файл с конфигом, сюда вы можете просто вставить свой токен
