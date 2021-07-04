@@ -1,10 +1,6 @@
 import discord
 from discord.ext import commands
-<<<<<<< Updated upstream:news_anekdotes.py
-from script import anekdot_script, news_script
-=======
 from script import anekdot_script, balaboba_script
->>>>>>> Stashed changes:main.py
 from discord.utils import get
 import random
 from config import settings
@@ -57,35 +53,6 @@ async def анекдот(ctx):  # будет выводить анекдот, п
         await ctx.send(anekdots[0])  # случайный анекдот
         anekdots.pop(0)  # удаляем анекдот из пулла
     else:
-<<<<<<< Updated upstream:news_anekdotes.py
-        await ctx.send('Анекдоты кончились, дядя! \
-                        Что ты так много и жадно их читаешь!\n\
-                        А теперь и сам ищи себе эти анекдоты, родной!')
-        # анекдоты могут и кончится :)
-
-
-@bot.command()
-async def новости(ctx):  # напишет в чат новости, отображаемые на сайте VTimes
-    news_headline, news_default = news_script()
-    # сама главная новость, заодно ключ для ссылки
-    news_headline_key = list(news_headline.keys())[0]
-    # чтобы embed не выскакивал при выскакивании ссылок
-    news_headline_href = '<{}>'.format(news_headline[news_headline_key])
-    news_headline_output = f'***Внимание, новости!\n\n\nГлавная новость:***\n\
-                            {"**" + news_headline_key + "**"}.\nСсылка \
-                            к прочтению:\n{news_headline_href}\n\n\n'
-    default_news_output = '***Перейдем к другим новостям:***\n'
-    # аналогично главной новости, только теперь в цикле
-    for i in range(5):  # можете изменить количество вывода
-        news_default_key = list(news_default.keys())[i]
-        news_default_href = '<{}>'.format(news_default[news_default_key])
-        default_news_output += f'{i+1}) {"**" + news_default_key + "**" }.\n\
-                                Ссылка к прочтению:\n{news_default_href}\n\n'
-    # сводим новости в 1 сообщение
-    final_news_output = news_headline_output + default_news_output
-    await ctx.send(final_news_output)  # отправляем сообщение
-bot.run(settings['token'])  # вы можете вставить свой токен
-=======
         await ctx.send('Анекдоты кончились, дядя! Ну что ты так много и жадно их читаешь!\nА теперь и сам ищи себе эти анекдоты, родной!')
         #анекдоты могут и кончится :)
 
@@ -114,4 +81,3 @@ async def балабоба(ctx, *arg):
     
   
 bot.run(settings['token']) #у меня создан отдельный файл с конфигом, сюда вы можете просто вставить свой токен
->>>>>>> Stashed changes:main.py
