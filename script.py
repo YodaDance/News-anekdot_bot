@@ -17,6 +17,7 @@ def anekdot_script(anekdots, n_of_page): #ретернит лист анекдо
 
         soup = BeautifulSoup(response.text, 'lxml') #парсит страницу в html формат
         anekdots = soup.select('.text') #анекдот имеют класс "text"
+        #anekdots = [anekdot.get_text() for anekdot in anekdots]
 
         n_of_page += 1 #переход на след. страницу
         
@@ -36,11 +37,11 @@ def balaboba_script(text): #ретернит строку, полученную 
     payload = {"query": text,"intro": 0,"filter": 1}
     params =  json.dumps(payload).encode('utf-8')
 
-    req = urllib.request.Request(url, data=params, headers=headers)
-    response = urllib.request.urlopen(req)
-    data = response.read()
-    json_data = json.loads(data.decode('utf-8'))
+    req = urllib.request.Request(url, data=params, headers=headers) #отправляем запрос с нашим текстом
+    response = urllib.request.urlopen(req) #получаем ответ
+    data = response.read() 
+    json_data = json.loads(data.decode('utf-8')) #преобразуем в json
 
     
-    return json_data['text']
+    return json_data['text'] #в json ответ содержится в text
 

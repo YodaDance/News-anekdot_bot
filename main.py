@@ -50,7 +50,7 @@ async def анекдот(ctx):  # будет выводить анекдот, п
     if anekdots:
         random.shuffle(anekdots)  # перемешивает список анекдотов
         await ctx.send('Внимание, анекдот!\n')
-        await ctx.send(anekdots[0])  # случайный анекдот
+        await ctx.send(content = anekdots[0])  # tts = True случайный анекдот
         anekdots.pop(0)  # удаляем анекдот из пулла
     else:
         await ctx.send('Анекдоты кончились, дядя! Ну что ты так много и жадно их читаешь!\nА теперь и сам ищи себе эти анекдоты, родной!')
