@@ -40,6 +40,8 @@ async def on_member_remove(member):
 # bot commands - команды в чате
 anekdots = []
 n_of_page = 1
+
+
 @bot.command()
 async def анекдот(ctx):  # будет выводить анекдот, пока они не кончатся
     global anekdots
@@ -50,34 +52,31 @@ async def анекдот(ctx):  # будет выводить анекдот, п
     if anekdots:
         random.shuffle(anekdots)  # перемешивает список анекдотов
         await ctx.send('Внимание, анекдот!\n')
-        await ctx.send(content = anekdots[0])  # tts = True случайный анекдот
+        await ctx.send(content=anekdots[0])  # tts = True случайный анекдот
         anekdots.pop(0)  # удаляем анекдот из пулла
     else:
-        await ctx.send('Анекдоты кончились, дядя! Ну что ты так много и жадно их читаешь!\nА теперь и сам ищи себе эти анекдоты, родной!')
-        #анекдоты могут и кончится :)
+        await ctx.send('Анекдоты кончились, дядя! \
+            Ну что ты так много и жадно их читаешь!\
+                \nА теперь и сам ищи себе эти анекдоты, родной!')
+        # анекдоты могут и кончится :)
 
 
 @bot.command()
 async def балабоба(ctx, *arg):
-    # реализация в комментах позволяет вам сначала вызвать команду, а потом добавить в нее текст для вызова скрипта балабобы
+    # реализация в комментах позволяет вам сначала вызвать команду,
+    # а потом добавить в нее текст для вызова скрипта балабобы
     # await ctx.send('Таки и поведай мне, что ты хочешь написать!')
-    
-
     # def check(msg):
-    #     return msg.author == ctx.author and msg.channel == ctx.channel 
-
-
+    #     return msg.author == ctx.author and msg.channel == ctx.channel
     # try:
-    #     msg = await bot.wait_for('message', check = check, timeout = 30) #30 сек на ввод текста
+    #     msg = await bot.wait_for('message', check = check, timeout = 30)
+    # #30 сек на ввод текста
     # except asyncio.TimeoutError:
     #     await ctx.send('Таки клювом в нашей семье не щелкают и отвечают быстро!')
-    
     # await ctx.send(balaboba_script(msg.content))
     text = " ".join(arg)
     try:
         await ctx.send(f"**{text}** {balaboba_script(text)}")
-    except:
+    except KeyError:
         await ctx.send('Алю! За такие слова и на базаре нос отрывают! Ошибка!')
-    
-  
-bot.run(settings['token']) #у меня создан отдельный файл с конфигом, сюда вы можете просто вставить свой токен
+bot.run(settings['token'])   # ваш токен вместо settings['token']
